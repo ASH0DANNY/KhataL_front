@@ -12,6 +12,7 @@ import {
 import React, { useState } from "react";
 import { ErrorAlert, SuccessAlert } from "../utils/alerts";
 import SingleHistory from "./singleHistory";
+import { BASE_URL } from "../../helper";
 
 const VendorCard = ({ vendor }) => {
   const [updateAlert, setupdateAlert] = useState(false);
@@ -59,7 +60,7 @@ const VendorCard = ({ vendor }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/khata/vendor/${vendorId}`,
+        `${BASE_URL}/api/khata/vendor/${vendorId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -78,7 +79,7 @@ const VendorCard = ({ vendor }) => {
     // const UpdateMyBalance = async ({ newTransAmount }) => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/khata/mybalance",
+        `${BASE_URL}/api/khata/mybalance`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -110,7 +111,7 @@ const VendorCard = ({ vendor }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/khata/vendor/${vendorId}`
+        `${BASE_URL}/api/khata/vendor/${vendorId}`
       );
 
       if (response) {
