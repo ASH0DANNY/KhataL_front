@@ -102,7 +102,7 @@ const HomePage = ({ isLoggedin }) => {
           <FloatingCard />
 
           <Container>
-            <Paper elevation={3}>
+            <Paper elevation={3} sx={{m:0, p:0, width:"100%"}}>
               {Array.isArray(allvendors) && allvendors.length > 0 ? (
                 <ContainerList vendors={allvendors} />
               ) : (

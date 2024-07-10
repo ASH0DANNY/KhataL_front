@@ -34,9 +34,9 @@ const VendorCard = ({ vendor }) => {
   // };
 
   const cardRoot = {
-    maxWidth: "100%",
+    width: "100%",
     marginTop: "20px",
-    height: historyBody ? "60vh" : "30vh" ,
+    height: historyBody ? "90vh" : "55vh" ,
   };
 
   const handleUpdateBtn = async (vendorId) => {

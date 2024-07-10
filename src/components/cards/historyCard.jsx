@@ -10,8 +10,9 @@ const HistoryCard = ({ history }) => {
   const cardRoot = {
     maxWidth: "100%",
     marginTop: "20px",
-    height: "50px",
+    height: "70px",
     backgroundColor: set_color,
+    fontSize: 13,
     // backgroundColor: `linear-gradient(to right,white, ${set_color} )`,
     // background-image: linear-gradient(to right, red , yellow);
   };
@@ -41,7 +42,8 @@ const HistoryCard = ({ history }) => {
               {history.trans_desc}
             </Grid>
             <Grid item xs={3} sx={{ fontWeight: "15px" }}>
-              {history.trans_type === "credit" ? "-" : "+"} ₹ {history.trans_amount}
+              {history.trans_type === "credit" ? "-" : "+"} ₹{" "}
+              {history.trans_amount}
             </Grid>
           </Grid>
         </CardContent>
