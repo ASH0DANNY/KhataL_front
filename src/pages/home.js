@@ -8,6 +8,7 @@ import FloatingCard from "../components/floatingBalanceCard";
 import userLoggedIn from "../pages/loginPage";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { BASE_URL } from "../helper";
 
 let buttonStyle = {
   margin: 2,
@@ -69,7 +70,7 @@ const HomePage = ({ isLoggedin }) => {
   console.log("Get Vendors2 is Clicked!!");
   useEffect(() => {
     const fetchvendors = async () => {
-      const response2 = await fetch("http://localhost:4000/api/khata/vendors");
+      const response2 = await fetch(`${BASE_URL}/api/khata/vendors`);
 
       await response2
         .json()
@@ -94,7 +95,7 @@ const HomePage = ({ isLoggedin }) => {
     <>
       <MetaData title="HOME PAGE" />
       {!userLoggedIn ? (
-        navigate("/loginpage")
+        navigate("/")
       ) : (
         <>
           <Navbar />

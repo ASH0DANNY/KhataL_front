@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import MetaData from "../components/metadata";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { BASE_URL } from "../helper";
 
 const AddNewVendor = () => {
   const [alert, setAlert] = useState(false);
@@ -56,7 +57,7 @@ const AddNewVendor = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/khata/vendors/new",
+        `${BASE_URL}/api/khata/vendors/new`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

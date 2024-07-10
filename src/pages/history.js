@@ -5,6 +5,7 @@ import HistoryList from "../components/historyList";
 import { ErrorAlert } from "../components/utils/alerts";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { BASE_URL } from "../helper";
 
 const HistoryPage = () => {
   const [muiAlert, setmuiAlert] = useState(false);
@@ -13,7 +14,7 @@ const HistoryPage = () => {
   useEffect(() => {
     const fetchvendors = async () => {
       const tran_history = await fetch(
-        `http://localhost:4000/api/khata/transaction/histories`
+        `${BASE_URL}/api/khata/transaction/histories`
       );
 
       await tran_history

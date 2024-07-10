@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Typography, TextField, Button, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ErrorAlert } from "../components/utils/alerts";
+import { BASE_URL } from "../helper";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const LoginPage = () => {
       setOpen(true);
     } else {
       try {
-        const response = await fetch("http://localhost:4000/api/khata/login", {
+        const response = await fetch(`${BASE_URL}/api/khata/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: email, password: password }),

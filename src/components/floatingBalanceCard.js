@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { BASE_URL } from "../helper";
 
 const cardStyle = {
   width: 150,
@@ -30,7 +31,7 @@ const FloatingCard = () => {
   useEffect(() => {
     const fetchbalance = async () => {
       const getBalance = await fetch(
-        "http://localhost:4000/api/khata/mybalance"
+        `${BASE_URL}/api/khata/mybalance`
       );
 
       await getBalance
@@ -53,7 +54,7 @@ const FloatingCard = () => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:4000/api/khata/mybalance",
+        `${BASE_URL}/api/khata/mybalance`,
         {
           method: "PUT", // Use PUT for updating data
           headers: { "Content-Type": "application/json" }, // Specify content type
@@ -69,7 +70,7 @@ const FloatingCard = () => {
       }
 
       const fetchUpdatedBalance = await fetch(
-        "http://localhost:4000/api/khata/mybalance"
+        `${BASE_URL}/api/khata/mybalance`
       );
       if (!fetchUpdatedBalance.ok) {
         throw new Error(`HTTP error! status: ${fetchUpdatedBalance.status}`);
