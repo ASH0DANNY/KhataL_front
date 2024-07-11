@@ -20,6 +20,7 @@ const cardStyle = {
   alignItems: "center",
   backgroundColor: "#fff",
   transition: "transform 0.2s",
+  // pointerEvents:  'none'
 };
 
 const FloatingCard = () => {
