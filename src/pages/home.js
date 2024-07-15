@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MetaData from "../components/metadata";
-import { Button, Container, Paper, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ContainerList from "../components/containerList";
 import { useNavigate } from "react-router-dom";
 import { ErrorAlert } from "../components/utils/alerts";
@@ -101,30 +101,26 @@ const HomePage = ({ isLoggedin }) => {
           <Navbar />
           <FloatingCard />
 
-          <Container>
-            <Paper elevation={3} sx={{m:0, p:0, width:"100%"}}>
-              {Array.isArray(allvendors) && allvendors.length > 0 ? (
-                <ContainerList vendors={allvendors} />
-              ) : (
-                <Typography component="p">
-                  passed parameter is not in array
-                </Typography>
-              )}
-              <Typography component="p">
-                See all history :
-                <Button
-                  variant="contained"
-                  sx={buttonStyle}
-                  onClick={goToHistory}
-                >
-                  All History
-                </Button>
-              </Typography>
-              <Typography>
-                {muiAlert && <ErrorAlert message={"Cannot fetch vendors"} />}
-              </Typography>
-            </Paper>
-          </Container>
+          {/* <Container sx={{width:"100%", p:0, m:0}}> */}
+          {/* <Paper elevation={3} sx={{m:0, p:0, width:"100%"}}> */}
+          {Array.isArray(allvendors) && allvendors.length > 0 ? (
+            <ContainerList vendors={allvendors} />
+          ) : (
+            <Typography component="p">
+              passed parameter is not in array
+            </Typography>
+          )}
+          <Typography component="p">
+            See all history :
+            <Button variant="contained" sx={buttonStyle} onClick={goToHistory}>
+              All History
+            </Button>
+          </Typography>
+          <Typography>
+            {muiAlert && <ErrorAlert message={"Cannot fetch vendors"} />}
+          </Typography>
+          {/* </Paper> */}
+          {/* </Container> */}
           <Footer />
         </>
       )}
