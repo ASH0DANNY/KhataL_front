@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/KhataL_front/static/css/main.d4952456.css",
+    "main.css": "/KhataL_front/static/css/main.e6c13ad2.css",
     "main.js": "/KhataL_front/static/js/main.51484a5f.js",
     "static/js/453.d855a71b.chunk.js": "/KhataL_front/static/js/453.d855a71b.chunk.js",
     "index.html": "/KhataL_front/index.html",
-    "main.d4952456.css.map": "/KhataL_front/static/css/main.d4952456.css.map",
+    "main.e6c13ad2.css.map": "/KhataL_front/static/css/main.e6c13ad2.css.map",
     "main.51484a5f.js.map": "/KhataL_front/static/js/main.51484a5f.js.map",
     "453.d855a71b.chunk.js.map": "/KhataL_front/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4952456.css",
+    "static/css/main.e6c13ad2.css",
     "static/js/main.51484a5f.js"
   ]
 }
