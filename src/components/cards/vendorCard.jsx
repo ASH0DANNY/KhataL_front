@@ -9,12 +9,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ErrorAlert, SuccessAlert } from "../utils/alerts";
 import SingleHistory from "./singleHistory";
 import { BASE_URL } from "../../helper";
 
 const VendorCard = ({ vendor }) => {
+  const[allVendors, setAllVendors] =useState(vendor);
   const [updateAlert, setupdateAlert] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
   const [transAmount, setTransAmount] = useState(0);
@@ -106,6 +107,24 @@ const VendorCard = ({ vendor }) => {
     }, 2000);
   };
 
+  useEffect(() => {
+    const fetchvendors = async () => {
+      const response2 = await fetch(`${BASE_URL}/api/khata/vendors`);
+
+      await response2
+        .json()
+        .then((response) => {
+          const response1 = response;
+          const mydata1 = response1.Vendors;
+          setAllVendors(mydata1);
+        })
+        .catch((error) => {
+          console.log("error:" + error);
+        });
+    };
+    fetchvendors();
+  }, []);
+
   const getSingleHistory = async (vendorId) => {
     historyBody ? setHistoryBody(false) : setHistoryBody(true);
 
@@ -131,11 +150,11 @@ const VendorCard = ({ vendor }) => {
         <CardContent>
           <Grid container spacing={1} sx={{ mb: 1 }}>
             <Grid item xs={12} md={4}>
-              {vendor.name}
+              {allVendors.name}
             </Grid>
 
             <Grid item xs={4}>
-              ₹ {vendor.balance}
+              ₹ {allVendors.balance}
             </Grid>
 
             <Grid item md={4} xs={12}>
@@ -192,7 +211,7 @@ const VendorCard = ({ vendor }) => {
             <Grid item md={4} xs={12}>
               <Button
                 variant="contained"
-                key={vendor._id}
+                key={allVendors._id}
                 onClick={() => handleUpdateBtn(vendor._id)}
               >
                 Update
@@ -204,7 +223,7 @@ const VendorCard = ({ vendor }) => {
             {!historyBody ? (
               <Button
                 variant="outlined"
-                onClick={() => getSingleHistory(vendor._id)}
+                onClick={() => getSingleHistory(allVendors._id)}
               >
                 History
               </Button>
