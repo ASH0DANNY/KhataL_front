@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import { ErrorAlert, SuccessAlert } from "../utils/alerts";
 import SingleHistory from "./singleHistory";
 import { BASE_URL } from "../../helper";
+import { useNavigate } from "react-router-dom";
 
 const VendorCard = ({ vendor }) => {
   const [updateAlert, setupdateAlert] = useState(false);
@@ -25,6 +26,7 @@ const VendorCard = ({ vendor }) => {
   // const [transLength, setTransLength] = useState(1);
   // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   // const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const navigate = useNavigate();
 
   // const linkStyle = { textDecoration: "none", color: "#fff" };
 
