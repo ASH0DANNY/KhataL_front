@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ErrorAlert, SuccessAlert } from "../utils/alerts";
 import SingleHistory from "./singleHistory";
 import { BASE_URL } from "../../helper";
@@ -36,13 +36,13 @@ const VendorCard = ({ vendor }) => {
   const cardRoot = {
     width: "100%",
     marginTop: "20px",
-    height: historyBody ? "90vh" : "55vh",
+    height: historyBody ? "90vh" : "55vh" ,
   };
 
   const handleUpdateBtn = async (vendorId) => {
     console.log("vendorId" + vendorId);
 
-    if (!Transtype || !transDesc) {
+    if (!Transtype || !transDesc ) {
       setAlertOpen(true);
 
       setTimeout(() => {
@@ -59,11 +59,14 @@ const VendorCard = ({ vendor }) => {
     };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/khata/vendor/${vendorId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(vendorTransBody),
-      });
+      const response = await fetch(
+        `${BASE_URL}/api/khata/vendor/${vendorId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(vendorTransBody),
+        }
+      );
 
       if (response) {
         console.log("Transaction Updated : " + response.json());
@@ -72,26 +75,20 @@ const VendorCard = ({ vendor }) => {
       console.error("Error updating balance:", error);
     }
 
-    setupdateAlert(true);
-    setTimeout(() => {
-      setupdateAlert(false);
-      //After excuting above tasks reload page
-      // window.location.reload();
-    }, 2000);
-  };
-
-  useEffect(async () => {
     //Updating My Balance
     // const UpdateMyBalance = async ({ newTransAmount }) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/khata/mybalance`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          newBalance: transAmount,
-          transType: Transtype,
-        }),
-      });
+      const response = await fetch(
+        `${BASE_URL}/api/khata/mybalance`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            newBalance: transAmount,
+            transType: Transtype,
+          }),
+        }
+      );
 
       if (response) {
         console.log("Balance Updated  " + response.json().balance);
@@ -99,14 +96,23 @@ const VendorCard = ({ vendor }) => {
     } catch (error) {
       console.error("Error updating balance:", error);
     }
-  }, []);
-  // };
+    // };
+
+    setupdateAlert(true);
+    setTimeout(() => {
+      setupdateAlert(false);
+      //After excuting above tasks reload page
+      window.location.reload();
+    }, 2000);
+  };
 
   const getSingleHistory = async (vendorId) => {
     historyBody ? setHistoryBody(false) : setHistoryBody(true);
 
     try {
-      const response = await fetch(`${BASE_URL}/api/khata/vendor/${vendorId}`);
+      const response = await fetch(
+        `${BASE_URL}/api/khata/vendor/${vendorId}`
+      );
 
       if (response) {
         const data = await response.json();
