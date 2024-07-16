@@ -75,6 +75,7 @@ const VendorCard = ({ vendor }) => {
       console.error("Error updating balance:", error);
     }
 
+    useEffect(async() => {
     //Updating My Balance
     // const UpdateMyBalance = async ({ newTransAmount }) => {
     try {
@@ -96,13 +97,17 @@ const VendorCard = ({ vendor }) => {
     } catch (error) {
       console.error("Error updating balance:", error);
     }
+
+    
+      
+    }, []);
     // };
 
     setupdateAlert(true);
     setTimeout(() => {
       setupdateAlert(false);
       //After excuting above tasks reload page
-      window.location.reload();
+      // window.location.reload();
     }, 2000);
   };
 
