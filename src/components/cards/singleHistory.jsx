@@ -28,7 +28,7 @@ const SingleHistory = ({ transdata }) => {
       <Container>
         {transdata.map((trans, index) => (
           <Typography key={index} sx={getColor(trans.trans_type)}>
-            <Grid container spacing={1} sx={{ ml: 2 }}>
+            <Grid container spacing={1} sx={{ ml: 2 , fontSize: 12}}>
               <Grid item xs={3}>
                 {formatDate(trans.date)}
               </Grid>

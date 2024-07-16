@@ -18,6 +18,7 @@ const cardStyle = {
   position: "fixed",
   justifyContent: "center",
   alignItems: "center",
+  zIndex: 100,
   backgroundColor: "#fff",
   transition: "transform 0.2s",
   // pointerEvents:  'none'
@@ -31,9 +32,7 @@ const FloatingCard = () => {
   //--Fetch My Balance--
   useEffect(() => {
     const fetchbalance = async () => {
-      const getBalance = await fetch(
-        `${BASE_URL}/api/khata/mybalance`
-      );
+      const getBalance = await fetch(`${BASE_URL}/api/khata/mybalance`);
 
       await getBalance
         .json()
@@ -54,17 +53,14 @@ const FloatingCard = () => {
   const UpdateBalance = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/khata/mybalance`,
-        {
-          method: "PUT", // Use PUT for updating data
-          headers: { "Content-Type": "application/json" }, // Specify content type
-          body: JSON.stringify({
-            newBalance: newBalance,
-            transType: Transtype,
-          }), // Send the updated balance in the request body
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/khata/mybalance`, {
+        method: "PUT", // Use PUT for updating data
+        headers: { "Content-Type": "application/json" }, // Specify content type
+        body: JSON.stringify({
+          newBalance: newBalance,
+          transType: Transtype,
+        }), // Send the updated balance in the request body
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
